@@ -1,0 +1,10 @@
+{
+  "name": "Молоко",
+  "category_id": 1,
+  "location_id": 1,
+  "quantity": 2,
+  "unit": "л",
+  "expiration_date": "2025-11-15",
+  "barcode": "4601234567890",
+  "note": "Только свежее"
+}
