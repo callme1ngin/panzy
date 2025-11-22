@@ -1,15 +1,25 @@
 from rest_framework import serializers
-from .models import Product, Category, Location, ShoppingListItem
+from .models import Product, Category, Location, ShoppingListItem, Unit, Icon
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = '__all__'
+
 class LocationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Location
         fields = '__all__'
 
+class IconSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Icon
+        fields = ['id', 'name', 'image']
+
+class UnitSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Unit
+        fields = ["id", "name"]
 
 class ProductSerializer(serializers.ModelSerializer):
     category = CategorySerializer(read_only=True)

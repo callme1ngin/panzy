@@ -4,8 +4,16 @@ from django.contrib.auth.models import User
 class Location(models.Model):
     name = models.CharField(max_length=100)
 
+class Icon(models.Model):
+    name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='icons/')
+
 class Category(models.Model):
     name = models.CharField(max_length=100)
+    icon = models.ForeignKey(Icon, on_delete=models.SET_NULL, null=True, blank=True)
+
+class Unit(models.Model):
+    name = models.CharField(max_length=100, unique=True)
 
 class Product(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -13,7 +21,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
-    unit = models.CharField(max_length=20, default="шт")  # например, кг, л, пачек...
+    unit = models.ForeignKey(Unit, on_delete=models.SET_NULL, null=True)
     expiration_date = models.DateField(null=True, blank=True)
     barcode = models.CharField(max_length=100, blank=True)
     note = models.TextField(blank=True)

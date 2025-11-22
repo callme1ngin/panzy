@@ -17,22 +17,48 @@ def create_default_locations():
         Location.objects.create(name=loc["name"])
 
 DEFAULT_CATEGORIES = [
-    {"name": "Молочные продукты"},
-    {"name": "Овощи"},
-    {"name": "Фрукты"},
-    {"name": "Мясо"},
-    {"name": "Бакалея"},
-    {"name": "Консервы"},
-    {"name": "Заморозка"},
-    {"name": "Напитки"},
-    {"name": "Сладости"},
-    {"name": "Соусы"},
-    {"name": "Хлеб"},
-    {"name": "Яйца"}
+    {"name": "Молочные продукты", "icon": "milk"},
+    {"name": "Овощи", "icon": "vegetables"},
+    {"name": "Фрукты", "icon": "fruits"},
+    {"name": "Мясо", "icon": "meat"},
+    {"name": "Бакалея", "icon": "groceries"},
+    {"name": "Консервы", "icon": "canned"},
+    {"name": "Заморозка", "icon": "frozen"},
+    {"name": "Напитки", "icon": "drinks"},
+    {"name": "Сладости", "icon": "sweets"},
+    {"name": "Соусы", "icon": "sauces"},
+    {"name": "Хлеб", "icon": "bread"},
+    {"name": "Яйца", "icon": "eggs"},
 ]
 
+
 def create_default_categories():
-    from pantry.models import Category
+    from pantry.models import Category, Icon
     for cat in DEFAULT_CATEGORIES:
-        Category.objects.create(name=cat["name"])
+        icon_obj = Icon.objects.filter(name=cat["icon"]).first()
+        print(f'Создаём категорию: {cat["name"]}, ищем иконку "{cat["icon"]}" — найдено:', icon_obj)
+        Category.objects.create(name=cat["name"], icon=icon_obj)
+
+
+DEFAULT_UNITS = [
+    {"name": "шт"},
+    {"name": "граммы"},
+    {"name": "килограммы"},
+    {"name": "миллилитры"},
+    {"name": "литры"},
+    {"name": "чашки"},
+    {"name": "столовые ложки"},
+    {"name": "чайные ложки"},
+    {"name": "унции"},
+    {"name": "фунты"},
+    {"name": "жидкие унции"}
+]
+
+def create_default_units():
+    from pantry.models import Unit
+    for unit in DEFAULT_UNITS:
+        Unit.objects.create(name=unit["name"])
+
+
+
 
