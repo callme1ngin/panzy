@@ -26,8 +26,6 @@ SECRET_KEY = 'django-insecure-d5mv%!sc(bn1v(7(2_$=4a(#az1c15b79&@#d+s)8747z9m6mw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'pantry.authentication.UidAuthentication',
