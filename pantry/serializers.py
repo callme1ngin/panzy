@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Product, Category, Location, ShoppingListItem, Unit, Icon
+from .models import Product, Category, Location, ShoppingListItem, Unit
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -10,11 +10,6 @@ class LocationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Location
         fields = '__all__'
-
-class IconSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Icon
-        fields = ['id', 'name', 'image']
 
 class UnitSerializer(serializers.ModelSerializer):
     class Meta:

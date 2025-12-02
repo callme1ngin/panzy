@@ -1,7 +1,7 @@
 from rest_framework import viewsets, permissions
-from .models import Product, Category, Location, ShoppingListItem, Unit, Icon
+from .models import Product, Category, Location, ShoppingListItem, Unit
 from .serializers import (
-    ProductSerializer, CategorySerializer, LocationSerializer, ShoppingListItemSerializer, UnitSerializer, IconSerializer
+    ProductSerializer, CategorySerializer, LocationSerializer, ShoppingListItemSerializer, UnitSerializer
 )
 from django.contrib.auth.models import User
 from rest_framework.views import APIView
@@ -47,10 +47,6 @@ class LocationViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return Location.objects.all()
-
-class IconViewSet(viewsets.ModelViewSet):
-    queryset = Icon.objects.all()
-    serializer_class = IconSerializer
 
 class ShoppingListViewSet(viewsets.ModelViewSet):
     serializer_class = ShoppingListItemSerializer

@@ -4,13 +4,9 @@ from django.contrib.auth.models import User
 class Location(models.Model):
     name = models.CharField(max_length=100)
 
-class Icon(models.Model):
-    name = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='icons/')
-
 class Category(models.Model):
     name = models.CharField(max_length=100)
-    icon = models.ForeignKey(Icon, on_delete=models.SET_NULL, null=True, blank=True)
+    icon_name = models.CharField(max_length=100, null=True, blank=True)
 
 class Unit(models.Model):
     name = models.CharField(max_length=100, unique=True)

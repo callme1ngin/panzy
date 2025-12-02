@@ -33,11 +33,10 @@ DEFAULT_CATEGORIES = [
 
 
 def create_default_categories():
-    from pantry.models import Category, Icon
+    from pantry.models import Category
     for cat in DEFAULT_CATEGORIES:
-        icon_obj = Icon.objects.filter(name=cat["icon"]).first()
-        print(f'Создаём категорию: {cat["name"]}, ищем иконку "{cat["icon"]}" — найдено:', icon_obj)
-        Category.objects.create(name=cat["name"], icon=icon_obj)
+        Category.objects.create(name=cat["name"], icon_name=cat["icon"])
+
 
 
 DEFAULT_UNITS = [
